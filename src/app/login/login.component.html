@@ -1,18 +1,19 @@
 <clr-main-container>
     <clr-header class="header-2">
-    <div class="header-nav" [clr-nav-level]="1">
-      
-      <div class="branding">
+    <div class="branding">
           <a class="nav-link">
+          <clr-icon shape="home"  size="24"></clr-icon>
           <span class="title">{{title}}</span>
           </a>
       </div>
+      <div class="header-nav" [clr-nav-level]="1">
       <div class="header-nav">
           <a class="nav-link nav-text" routerLink="/home">Home</a>
-          <a class="active nav-link nav-text" routerLink="/login">Login</a>  
-      </div>
-      </div>
-  </clr-header>
+          <a class="active nav-link nav-text" routerLink="/login">Login</a> 
+    </div>
+    </div>
+      </clr-header>
+      
   <div class="content-container">
       <div class="content-area">
           <div class="login-wrapper">
@@ -51,6 +52,7 @@
               </form>
           </div>
       </div>
+    
   </div>
   <div class="clr-footer">
     Footer
