@@ -9,7 +9,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class LoginComponent {
  
-  title = 'Limonnana';
   model = new Login('','',false);
   wrongCredentials: string | undefined;
   loginForm!: FormGroup;
