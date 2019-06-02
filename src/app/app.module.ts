@@ -9,6 +9,9 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterComponent } from './register/register.component';
+import { UsersComponent } from './user/users/users.component';
+import { EditComponent } from './user/edit/edit.component';
+import { HttpClientModule } from '@angular/common/http'; 
 
 
 @NgModule({
@@ -18,13 +21,16 @@ import { RegisterComponent } from './register/register.component';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    RegisterComponent
+    RegisterComponent,
+    UsersComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
     ClarityModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

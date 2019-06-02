@@ -1,43 +1,43 @@
 <div class="content-container">
 <div class="content-area">
-<form class="clr-form">
+<form class="clr-form" (ngSubmit)="register()"[formGroup]="registerForm">
   <div class="clr-form-control">
     <label for="name" class="clr-control-label">Name</label>
       <div class="clr-control-container">
           <div class="clr-input-wrapper">
-              <input type="text" id="name" placeholder="name" class="clr-input">
+              <input type="text" name="name" formControlName="name" placeholder="name" class="clr-input">
               <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
           </div>
         </div>
      <label for="email" class="clr-control-label">Email</label>
         <div class="clr-control-container">
           <div class="clr-input-wrapper">
-              <input type="text" id="email" placeholder="email" class="clr-input">
+              <input type="text" name="email" formControlName="email" placeholder="email" class="clr-input">
               <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
           </div>
         </div>
         <label for="phone" class="clr-control-label">Phone</label>
         <div class="clr-control-container">
           <div class="clr-input-wrapper">
-              <input type="text" id="phone" placeholder="phone" class="clr-input">
+              <input type="text" name="phone" formControlName="phone"  placeholder="phone" class="clr-input">
               <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
           </div>
         </div>
         <label for="password" class="clr-control-label">Password</label>
         <div class="clr-control-container">
           <div class="clr-input-wrapper">
-              <input type="password" id="password" placeholder="password" class="clr-input">
+              <input type="password" name="password" formControlName="password"  placeholder="password" class="clr-input">
               <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
           </div>
         </div>
         <label for="retypePassword" class="clr-control-label">Re-type Password</label>
         <div class="clr-control-container">
           <div class="clr-input-wrapper">
-              <input type="password" id="retypePassword" placeholder="Re-type Password" class="clr-input">
+              <input type="password" name="retypePassword" formControlName="retypePassword"  placeholder="Re-type Password" class="clr-input">
               <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
           </div>
         </div>
-        <button class="btn btn-primary" style="margin:2% 1%">Register</button>
+        <button class="btn btn-primary" type="submit" style="margin:2% 1%">Register</button>
   </div>
 </form>
 </div>
