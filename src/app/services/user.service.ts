@@ -39,6 +39,10 @@ export class UserService {
     return this.http.post<User>(`${environment.secureUserApi}/create`, user);
   }
 
+  getUserById(id: number) {
+    return this.http.get<User>(`${environment.secureUserApi}/getUser/` + id);
+  }
+
   handleError(error: { error: { message: string }; status: any; message: any }) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

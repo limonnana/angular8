@@ -4,6 +4,7 @@
 <table class="table">
   <thead>
       <tr>
+          <th>Id</th>
           <th class="left">Name</th>
           <th class="left">Phone</th>
           <th class="left">Email</th>
@@ -14,13 +15,14 @@
   <tbody>
     
       <tr *ngFor="let user of userList">
+          <td>{{user.id}}</td>
           <td class="left">{{user.name}}</td>
           <td class="left">{{user.phone}}</td>
           <td class="left">{{user.email}}</td>
           <td class="left">{{user.created}}</td>
           <td class="left">
-            <a class="nav-link nav-text" routerLink="['/editUser',user.id]">edit</a> | 
-            <a class="nav-link nav-text" routerLink="/deleteUser">delete</a>
+                <button class="btn  btn-sm" (click)="editUser(user)">edit</button>  
+                <button class="btn  btn-sm">delete</button>
           
              
       </tr>

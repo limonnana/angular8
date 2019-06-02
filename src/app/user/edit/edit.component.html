@@ -1,3 +1,32 @@
-<p>
-  edit works!
-</p>
+<div class="content-container">
+    <div class="content-area">
+    <form class="clr-form" (ngSubmit)="edit()"[formGroup]="editForm">
+    <input type="hidden" name="id" formControlName="id">
+      <div class="clr-form-control">
+        <label for="name" class="clr-control-label">Name</label>
+          <div class="clr-control-container">
+              <div class="clr-input-wrapper">
+                  <input type="text" name="name" formControlName="name" placeholder="name" class="clr-input">
+                  <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              </div>
+            </div>
+         <label for="email" class="clr-control-label">Email</label>
+            <div class="clr-control-container">
+              <div class="clr-input-wrapper">
+                  <input type="text" name="email" formControlName="email" placeholder="email" class="clr-input">
+                  <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              </div>
+            </div>
+            <label for="phone" class="clr-control-label">Phone</label>
+            <div class="clr-control-container">
+              <div class="clr-input-wrapper">
+                  <input type="text" name="phone" formControlName="phone"  placeholder="phone" class="clr-input">
+                  <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              </div>
+            </div>
+            
+            <button class="btn btn-primary" type="submit" style="margin:2% 1%">Save</button>
+      </div>
+    </form>
+    </div>
+    </div>

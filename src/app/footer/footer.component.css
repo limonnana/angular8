@@ -5,3 +5,6 @@
     padding: 0 24px;
     color: #dddddd;
   }
+  .clr-footer a {
+    color: rgb(229, 229, 235);
+  }
