@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../entities/user';
 import { environment } from '../../environments/environment';                          
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { ApiResponse } from '../entities/api.response';
 
 
 @Injectable({
@@ -41,6 +42,15 @@ export class UserService {
 
   getUserById(id: number) {
     return this.http.get<User>(`${environment.secureUserApi}/getUser/` + id);
+  }
+
+  updateUser(user: User): Observable<ApiResponse>{
+    
+    return this.http.put<ApiResponse>(`${environment.secureUserApi}/updateUser/` + user.id, user)
+    .pipe(
+      retry(1),
+        catchError(this.handleError)
+      )
   }
 
   handleError(error: { error: { message: string }; status: any; message: any }) {

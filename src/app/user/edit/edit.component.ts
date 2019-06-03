@@ -38,4 +38,19 @@ export class EditComponent implements OnInit {
         this.editForm.setValue(this.user);
       });
   }
+
+  edit() {
+    this.userService.updateUser(this.editForm.value)
+      .subscribe((data) => {
+          if(data.message === 200) {
+            console.log('User updated successfully.');
+            this.router.navigate(['users']);
+          }else {
+            console.log(data);
+          }
+        },
+        error => {
+          console.log('ERROR: ' + error);
+        });
+  }
 }
