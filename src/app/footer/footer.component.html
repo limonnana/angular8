@@ -1,3 +1,7 @@
 <div class="clr-footer">
-  <a class="nav-link nav-text" routerLink="/login">Login</a> 
+
+  <a *ngIf="!isLogged" class="nav-link nav-text" routerLink="/login">Login</a> 
+
+isLogged: {{isLogged}}
 </div>
+

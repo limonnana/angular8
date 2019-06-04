@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { User } from '../entities/user';
 import { environment } from '../../environments/environment';                          
 import { Observable, throwError } from 'rxjs';
@@ -18,7 +18,7 @@ export class UserService {
   user: User[];
 
   public getUsers(): Observable<User[]> {
-    this.http
+   /* this.http
       .get<User>(`${environment.secureUserApi}/findAll`)
       .pipe(
         retry(1),
@@ -32,6 +32,7 @@ export class UserService {
           this.error = error;
         }
       );
+      */
     return this.http.get<User[]>(`${environment.secureUserApi}/findAll`);
   }
 
@@ -50,7 +51,7 @@ export class UserService {
     .pipe(
       retry(1),
         catchError(this.handleError)
-      )
+    )
   }
 
   handleError(error: { error: { message: string }; status: any; message: any }) {

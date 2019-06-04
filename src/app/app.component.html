@@ -1,6 +1,18 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <clr-main-container>
-<app-header></app-header>
+<app-header *ngIf="headerFooter">
+</app-header>
+<div class="content-container">
+        <main class="content-area">
 <router-outlet></router-outlet>
-<app-footer></app-footer>
+</main>
+<nav class="sidenav" [clr-nav-level]="2">
+    <section class="sidenav-content">
+      <a class="nav-link nav-text" routerLink="/users">Users</a> 
+   
+   </section>
+  </nav>
+
+</div>
+<app-footer *ngIf="headerFooter"></app-footer>
 </clr-main-container>

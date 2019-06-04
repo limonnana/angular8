@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Login } from '../entities/login';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { LoginService } from '../services/login.service';
+import { User } from '../entities/user';
+import {Router} from "@angular/router";
+import { Credentials, CredentialsService } from '../services/credentials.service';
 
 @Component({
   selector: 'app-login',
@@ -12,24 +16,36 @@ export class LoginComponent {
   model = new Login('','',false);
   wrongCredentials: string | undefined;
   loginForm!: FormGroup;
+  user: User;
+  private credentials: Credentials = { username: '', token: '' };
 
-  constructor( private formBuilder: FormBuilder){
+  constructor( private formBuilder: FormBuilder,
+     private loginService: LoginService,
+     private router: Router,
+     private credentialsService: CredentialsService
+     )
+  {
     this.createForm();
   }
   submitted = false;
 
   login() {
+    
+    this.loginService.authenticate(this.loginForm.value).subscribe(data => {
+      this.user = data;
+      console.log('User Logged: ' + JSON.stringify(this.user));
+      if(this.user.token != null){
+            this.credentials.username = this.user.name;
+            this.credentials.token = this.user.token;
+            this.credentialsService.setCredentials(this.credentials,this.loginForm.value.rememberMe);
+        this.router.navigate(['home']);
+      }else{
+        this.wrongCredentials = "wrong credentials";
 
-    console.log(JSON.stringify(this.loginForm.value));
+      }
+    });
   }
 
-  /*onSubmit() { 
-    console.log('Form: ' + JSON.stringify(this.model));
-    this.submitted = true; }
-
-  // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.model); }
-  */
   
   private createForm() {
     this.loginForm = this.formBuilder.group({
