@@ -5,6 +5,8 @@ import { LoginService } from '../services/login.service';
 import { User } from '../entities/user';
 import {Router} from "@angular/router";
 import { Credentials, CredentialsService } from '../services/credentials.service';
+import { ValidationService } from '../services/validation.service';
+
 
 @Component({
   selector: 'app-login',
@@ -23,7 +25,7 @@ export class LoginComponent {
      private loginService: LoginService,
      private router: Router,
      private credentialsService: CredentialsService
-     )
+  )
   {
     this.createForm();
   }
@@ -38,11 +40,10 @@ export class LoginComponent {
             this.credentials.username = this.user.name;
             this.credentials.token = this.user.token;
             this.credentialsService.setCredentials(this.credentials,this.loginForm.value.rememberMe);
-        this.router.navigate(['home']);
+            this.router.navigate(['home']);
       }else{
         this.wrongCredentials = "wrong credentials";
-
-      }
+     }
     });
   }
 

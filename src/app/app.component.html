@@ -3,16 +3,14 @@
 <app-header *ngIf="headerFooter">
 </app-header>
 <div class="content-container">
-        <main class="content-area">
-<router-outlet></router-outlet>
-</main>
-<nav class="sidenav" [clr-nav-level]="2">
+  <main class="content-area">
+  <router-outlet></router-outlet>
+  </main>
+    <nav *ngIf="showSecondNav" class="sidenav" [clr-nav-level]="2">
     <section class="sidenav-content">
       <a class="nav-link nav-text" routerLink="/users">Users</a> 
-   
-   </section>
-  </nav>
-
+    </section>
+    </nav>
 </div>
 <app-footer *ngIf="headerFooter"></app-footer>
 </clr-main-container>

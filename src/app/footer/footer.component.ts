@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CredentialsService } from '../services/credentials.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-footer',
@@ -10,7 +11,7 @@ export class FooterComponent implements OnInit {
 
   isLogged : boolean = false;
 
-  constructor(private credentialsService: CredentialsService) { }
+  constructor(private credentialsService: CredentialsService, private router: Router) { }
 
   ngOnInit() {
     this.isLogged = this.credentialsService.isAuthenticated();
@@ -18,7 +19,7 @@ export class FooterComponent implements OnInit {
   }
 
   logout() {
-    this.credentialsService.logout().subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
+    this.credentialsService.logout().subscribe(() => this.router.navigate(['home']));
   }
 
 }

@@ -1,7 +1,7 @@
 <div class="clr-footer">
 
   <a *ngIf="!isLogged" class="nav-link nav-text" routerLink="/login">Login</a> 
+  <a href="#" *ngIf="isLogged" class="nav-link nav-text" (click)="logout()">Logout</a> 
 
-isLogged: {{isLogged}}
 </div>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../entities/user';
+import { ValidationService } from '../services/validation.service';
 import { UserService } from '../services/user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {Router} from "@angular/router";
@@ -13,8 +14,13 @@ export class RegisterComponent implements OnInit {
 
   user: User;
   registerForm: FormGroup;
+  error: string;
 
-  constructor( private userService: UserService, private formBuilder: FormBuilder, private router: Router ) { 
+  constructor( private userService: UserService,
+     private formBuilder: FormBuilder,
+      private router: Router,
+      private validationService: ValidationService
+      ) { 
     this.createForm();
   }
 
@@ -23,10 +29,16 @@ export class RegisterComponent implements OnInit {
 
   register(){
     const userFromForm = this.registerForm.value;
+    this.error = this.validationService.validateRegisterForm(userFromForm);
+    if(this.error !== null){
+      console.log('error from form: ' + this.error);
+      return ; 
+    }else{
     this.userService.save(userFromForm)
     .subscribe( data => {
-      this.router.navigate(['users']);
+      this.router.navigate(['login']);
     });
+  }
   }
 
   private createForm() {

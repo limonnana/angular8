@@ -8,19 +8,22 @@
                   <div class="login-group">
                     <clr-input-container>
                           <input type="text" name="username" formControlName="username" clrInput placeholder="username"/>
-                      </clr-input-container>
+                          <clr-control-helper>Username or Email</clr-control-helper>
                       <small
                   [hidden]="loginForm.controls.username.valid || loginForm.controls.username.untouched"
                   class="text-danger">
                   Username is required
                 </small>
+               
+            </clr-input-container>
                       <clr-password-container>
                           <input type="password" name="password" formControlName="password" clrPassword placeholder="password"/>
-                      </clr-password-container>
-                      <small [hidden]="loginForm.controls.password.valid || loginForm.controls.password.untouched"
-                  class="text-danger">
-                  Password is required
-                </small>
+                          <small [hidden]="loginForm.controls.password.valid || loginForm.controls.password.untouched"
+                          class="text-danger">
+                          Password must be at least 6 characters long and have one number
+                        </small>
+                        </clr-password-container>
+                      
                       <clr-checkbox-wrapper>
                           <label>Remember me</label>
                           <input type="checkbox" name="rememberMe" formControlName="rememberMe" clrCheckbox />
@@ -28,9 +31,9 @@
                       <div *ngIf="wrongCredentials" class="error active">
                           Invalid user name or password
                       </div>
-                      <button type="submit" class="btn btn-primary">Login</button>
+                      <button input type="submit" class="btn btn-primary">Login</button>
                       <a class="signup" routerLink="/register">Register</a> 
                   </div>
               </form>
           </div>
-      
+       

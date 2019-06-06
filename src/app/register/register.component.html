@@ -1,38 +1,60 @@
+<div class="text-danger">{{error}}.</div>
+
 <form class="clr-form" (ngSubmit)="register()"[formGroup]="registerForm">
   <div class="clr-form-control">
     <label for="name" class="clr-control-label">Name</label>
       <div class="clr-control-container">
           <div class="clr-input-wrapper">
               <input type="text" name="name" formControlName="name" placeholder="name" class="clr-input">
-              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <small
+              [hidden]="registerForm.controls.name.valid || registerForm.controls.name.untouched"
+              class="text-danger">
+              name is required
+            </small>
           </div>
         </div>
      <label for="email" class="clr-control-label">Email</label>
         <div class="clr-control-container">
           <div class="clr-input-wrapper">
               <input type="text" name="email" formControlName="email" placeholder="email" class="clr-input">
-              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <small
+              [hidden]="registerForm.controls.email.valid || registerForm.controls.email.untouched"
+              class="text-danger">
+              email is required
+            </small>
           </div>
         </div>
         <label for="phone" class="clr-control-label">Phone</label>
         <div class="clr-control-container">
           <div class="clr-input-wrapper">
               <input type="text" name="phone" formControlName="phone"  placeholder="phone" class="clr-input">
-              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <small
+              [hidden]="registerForm.controls.phone.valid || registerForm.controls.phone.untouched"
+              class="text-danger">
+              phone is required
+            </small>
           </div>
         </div>
         <label for="password" class="clr-control-label">Password</label>
         <div class="clr-control-container">
           <div class="clr-input-wrapper">
               <input type="password" name="password" formControlName="password"  placeholder="password" class="clr-input">
-              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <small
+              [hidden]="registerForm.controls.password.valid || registerForm.controls.password.untouched"
+              class="text-danger">
+              password is required
+            </small>
           </div>
         </div>
         <label for="retypePassword" class="clr-control-label">Re-type Password</label>
         <div class="clr-control-container">
           <div class="clr-input-wrapper">
               <input type="password" name="retypePassword" formControlName="retypePassword"  placeholder="Re-type Password" class="clr-input">
-              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <small
+              [hidden]="registerForm.controls.retypePassword.valid || registerForm.controls.retypePassword.untouched"
+              class="text-danger">
+              Retype Password is required
+            </small>
           </div>
         </div>
         <button class="btn btn-primary" type="submit" style="margin:2% 1%">Register</button>

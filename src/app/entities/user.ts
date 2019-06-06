@@ -4,6 +4,7 @@ export class User {
   phone: string;
   email: string;
   password: string;
+  retypePassword: string;
   token: string;
   created: string;
   modified: string;
