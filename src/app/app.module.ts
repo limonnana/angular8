@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { UsersComponent } from './user/users/users.component';
 import { EditComponent } from './user/edit/edit.component';
 import { HttpClientModule } from '@angular/common/http'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     AppRoutingModule
   ],
   providers: [],

@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
   register(){
     const userFromForm = this.registerForm.value;
     this.error = this.validationService.validateRegisterForm(userFromForm);
-    if(this.error !== null){
+    if(this.error != null){
       console.log('error from form: ' + this.error);
       return ; 
     }else{

@@ -11,7 +11,7 @@ export class ValidationService {
 
   validateRegisterForm(user: User): string{
 
-    let error: string | null = null;
+    let error: string;
 
     if(user.email == null){
       error = " email is null ";

@@ -1,4 +1,5 @@
 <h3>Users</h3>
+
 <table class="table">
   <thead>
       <tr>
@@ -20,10 +21,29 @@
           <td class="left">{{user.created}}</td>
           <td class="left">
                 <button class="btn  btn-sm" (click)="editUser(user)">edit</button>  
-                <button class="btn  btn-sm">delete</button>
+                <button class="btn  btn-sm" (click)="deleteUser(user.id)">delete</button>
           
              
       </tr>
      
    </tbody>
    </table>   
+   <clr-modal [(clrModalOpen)]="open" [clrModalSize]="'sm'" (clrModalOpenChange)="openChange($event)">
+    <h4 class="modal-title">Are you sure  ?</h4>
+    
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="cancelDelete()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="yesDelete()">Ok</button>
+    </div>
+</clr-modal>
+
+
+
+   <!-- div class="modal">
+    <div class="modal-dialog modal-sm" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            ...
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop" aria-hidden="true"></div-->

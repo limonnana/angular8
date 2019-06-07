@@ -39,7 +39,6 @@ export class AppComponent {
     checkSecondNav(){
       if(this.headerFooter && this.isLogged){
         this.showSecondNav = true;
-        console.log('showSeconNav:' + this.showSecondNav);
       }
      
     }

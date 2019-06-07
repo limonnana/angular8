@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { ApiResponse } from '../entities/api.response';
+import { Data } from '../entities/data';
 
 
 @Injectable({
@@ -39,6 +40,10 @@ export class UserService {
   public save(user: User) {
     console.log(JSON.stringify(user));
     return this.http.post<User>(`${environment.secureUserApi}/create`, user);
+  }
+
+  public delete(id: string){
+    return this.http.delete<ApiResponse>(`${environment.secureUserApi}/deleteUser/` + id);
   }
 
   getUserById(id: number) {
