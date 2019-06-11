@@ -16,7 +16,7 @@
      <label for="email" class="clr-control-label">Email</label>
         <div class="clr-control-container">
           <div class="clr-input-wrapper">
-              <input type="text" name="email" formControlName="email" placeholder="email" class="clr-input">
+              <input type="text" name="email" formControlName="email" (blur)="isEmailTaken($event)" placeholder="email" class="clr-input">
               <small
               [hidden]="registerForm.controls.email.valid || registerForm.controls.email.untouched"
               class="text-danger">

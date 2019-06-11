@@ -4,8 +4,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { User } from '../entities/user';
 import {Router} from "@angular/router";
-import { Credentials, CredentialsService } from '../services/credentials.service';
+import {CredentialsService } from '../services/credentials.service';
+import { Credentials } from '../entities/credentials';
 import { ValidationService } from '../services/validation.service';
+import { Role } from '../entities/role';
 
 
 @Component({
@@ -19,7 +21,7 @@ export class LoginComponent {
   wrongCredentials: string | undefined;
   loginForm!: FormGroup;
   user: User;
-  private credentials: Credentials = { username: '', token: '' };
+  credentials = new Credentials('', '',  Role.USER);
 
   constructor( private formBuilder: FormBuilder,
      private loginService: LoginService,
@@ -36,9 +38,10 @@ export class LoginComponent {
     this.loginService.authenticate(this.loginForm.value).subscribe(data => {
       this.user = data;
       console.log('User Logged: ' + JSON.stringify(this.user));
-      if(this.user.token != null){
-            this.credentials.username = this.user.name;
+      if(this.user.token){
+       //     this.credentials.username = this.user.email;
             this.credentials.token = this.user.token;
+            this.credentials.role = this.user.role;
             this.credentialsService.setCredentials(this.credentials,this.loginForm.value.rememberMe);
             this.router.navigate(['home']);
       }else{
@@ -50,7 +53,7 @@ export class LoginComponent {
   
   private createForm() {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      username: ['', ],
       password: ['', Validators.required],
       rememberMe: false
     });

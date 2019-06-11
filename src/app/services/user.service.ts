@@ -5,7 +5,7 @@ import { environment } from '../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { ApiResponse } from '../entities/api.response';
-import { Data } from '../entities/data';
+
 
 
 @Injectable({
@@ -19,21 +19,6 @@ export class UserService {
   user: User[];
 
   public getUsers(): Observable<User[]> {
-   /* this.http
-      .get<User>(`${environment.secureUserApi}/findAll`)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
-      .subscribe(
-        theCredentials => {
-      },
-        error => {
-          console.log(`Login error: ${error}`);
-          this.error = error;
-        }
-      );
-      */
     return this.http.get<User[]>(`${environment.secureUserApi}/findAll`);
   }
 
@@ -57,6 +42,10 @@ export class UserService {
       retry(1),
         catchError(this.handleError)
     )
+  }
+
+  isEmailTaken(email: string): Observable<ApiResponse>{
+    return this.http.get<ApiResponse>(`${environment.secureUserApi}/email/` + email);
   }
 
   handleError(error: { error: { message: string }; status: any; message: any }) {

@@ -13,20 +13,20 @@ export class ValidationService {
 
     let error: string;
 
-    if(user.email == null){
-      error = " email is null ";
+    if(!user.email){
+      error = " email is required ";
     }
-    if(this.emailValidator(user.email) != null){
-       error = (error != null?'': error) + " email is not valid ";
+    if(this.emailValidator(user.email)){
+       error = (error?'': error) + " email is not valid ";
     }
-    if(this.passwordValidator(user.password)!= null){
-        error = (error != null?'': error)+ " password not valid "; 
+    if(this.passwordValidator(user.password)){
+        error = (error?'': error)+ " password is not valid "; 
     }
     if(this.retypePassword(user.password, user.retypePassword)){
-      error = (error != null?'': error) + " password and retype password don't match "
+      error = (error?'': error) + " password and retype password don't match "
     }
     if(user.phone.length<10 || user.phone.length>11){
-      error = (error != null?'': error) + " phone number is not valid  "
+      error = (error?'': error) + " phone number is not valid  "
     }
       // TODO validate password
      return error;

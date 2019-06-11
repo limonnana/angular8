@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { Role } from '../entities/role';
 
 export interface Credentials {
   // Customize received credentials here
   username: string;
+  role: Role;
   token: string;
 }
 
@@ -33,6 +35,13 @@ export class CredentialsService {
   isAuthenticated(): boolean {
     return  !!this.credentials;
   }
+
+  getRole(): Role{
+    if(this._credentials){
+      return this.credentials.role;
+    }
+      return null;
+    }
 
   /**
    * Gets the user credentials.
