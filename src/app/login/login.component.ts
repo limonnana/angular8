@@ -39,7 +39,7 @@ export class LoginComponent {
       this.user = data;
       console.log('User Logged: ' + JSON.stringify(this.user));
       if(this.user.token){
-       //     this.credentials.username = this.user.email;
+            this.credentials.username = this.user.email;
             this.credentials.token = this.user.token;
             this.credentials.role = this.user.role;
             this.credentialsService.setCredentials(this.credentials,this.loginForm.value.rememberMe);
@@ -53,8 +53,8 @@ export class LoginComponent {
   
   private createForm() {
     this.loginForm = this.formBuilder.group({
-      username: ['', ],
-      password: ['', Validators.required],
+      username: [''],// Validators.required],
+      password: [''],//, Validators.required],
       rememberMe: false
     });
   }

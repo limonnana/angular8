@@ -14,6 +14,8 @@ import { EditComponent } from './user/edit/edit.component';
 import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyInterceptor } from './services/myInterceptor';
+import { AuthTokenInterceptor } from './services/authTokenInterceptor';
+import { TheInterceptorService } from './services/the-interceptor.service';
 
 
 @NgModule({
@@ -39,7 +41,7 @@ import { MyInterceptor } from './services/myInterceptor';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: MyInterceptor,
+      useClass: TheInterceptorService,
       multi: true
     }
   ],

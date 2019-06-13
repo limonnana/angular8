@@ -24,7 +24,7 @@ export class LoginService {
 
   public authenticate(context: Login){
     return this.httpClient
-    .post<User>(`${environment.secureUserApi}/authenticate`, context)
+    .post<User>(`${environment.domain}/authenticate`, context)
     .pipe(
       retry(1),
         catchError(this.handleError)

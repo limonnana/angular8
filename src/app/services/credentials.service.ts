@@ -1,13 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Role } from '../entities/role';
+import { Credentials } from '../entities/credentials';
 
-export interface Credentials {
-  // Customize received credentials here
-  username: string;
-  role: Role;
-  token: string;
-}
 
 const credentialsKey = 'credentials';
 const nameKey = 'name';
@@ -50,6 +45,7 @@ export class CredentialsService {
   get credentials(): Credentials | null {
     return this._credentials;
   }
+
 
   /**
    * Sets the user credentials.

@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { ApiResponse } from '../entities/api.response';
+import { HttpCustomService } from './http-custom.service';
 
 
 
@@ -14,9 +15,11 @@ import { ApiResponse } from '../entities/api.response';
 export class UserService {
   error: string | undefined;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private httpCustom: HttpCustomService) {}
 
   user: User[];
+
+  // return this.http.post<[User]>(`${environment.secureUserApi}/findAll`, new User());
 
   public getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${environment.secureUserApi}/findAll`);
@@ -45,7 +48,7 @@ export class UserService {
   }
 
   isEmailTaken(email: string): Observable<ApiResponse>{
-    return this.http.get<ApiResponse>(`${environment.secureUserApi}/email/` + email);
+    return this.http.get<ApiResponse>(`${environment.domain}/emailTaken/` + email);
   }
 
   handleError(error: { error: { message: string }; status: any; message: any }) {

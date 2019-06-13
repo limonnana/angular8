@@ -12,25 +12,24 @@ import { Observable } from 'rxjs';
 import { CredentialsService } from './credentials.service';
 
 @Injectable()
-export class MyInterceptor implements HttpInterceptor {
-  constructor(private credentialsService: CredentialsService) { }
+export class TheInterceptorService implements HttpInterceptor {
+
+   credentialJson: string = 'defaul-Value';
   
-  currentUserCredentials = this.credentialsService.credentials;
-  credentialJson = JSON.stringify(this.currentUserCredentials);
- // console.log('the Credentials: ' + this.credentialJson);
+   constructor(private credentialsService: CredentialsService) { 
+  }
+
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    //how to update the request Parameters
-   
+    
+    let currentUserCredentials = this.credentialsService.credentials;
+     if(currentUserCredentials){
+      this.credentialJson = JSON.stringify(currentUserCredentials);
+     }
     const updatedRequest = request.clone({
        
-     // headers: request.headers.set("authorization",  "zaraza")
-    // setHeaders: {
-     //   Authorization: `Bearer zaraza`
-     // }
-
      headers: request.headers.set(`Authorization`, this.credentialJson)
         
     });
