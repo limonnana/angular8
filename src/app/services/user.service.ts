@@ -30,6 +30,11 @@ export class UserService {
     return this.http.post<User>(`${environment.secureUserApi}/create`, user);
   }
 
+  public register(user: User){
+    console.log(JSON.stringify(user));
+    return this.http.post<User>(`${environment.domain}/register`, user);
+  }
+
   public delete(id: string){
     return this.http.delete<ApiResponse>(`${environment.secureUserApi}/deleteUser/` + id);
   }

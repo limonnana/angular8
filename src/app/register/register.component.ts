@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
       return ; 
     }else{
       userFromForm.role = Role.USER;
-    this.userService.save(userFromForm)
+    this.userService.register(userFromForm)
     .subscribe( data => {
       this.router.navigate(['login']);
     });

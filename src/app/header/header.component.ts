@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CredentialsService } from '../services/credentials.service';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   title = 'Limonnana';
+  isLogged : boolean = false;
 
-  constructor() { }
+  constructor(private credentialsService: CredentialsService) { }
 
   ngOnInit() {
+    this.isLogged = this.credentialsService.isAuthenticated();
+    console.log('is authentik in header: ' + this.isLogged)
   }
 
 }
