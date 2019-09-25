@@ -13,8 +13,8 @@ import { UsersComponent } from './user/users/users.component';
 import { EditComponent } from './user/edit/edit.component';
 import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MyInterceptor } from './services/myInterceptor';
-import { AuthTokenInterceptor } from './services/authTokenInterceptor';
+//import { MyInterceptor } from './services/myInterceptor';
+//import { AuthTokenInterceptor } from './services/authTokenInterceptor';
 import { TheInterceptorService } from './services/the-interceptor.service';
 
 
